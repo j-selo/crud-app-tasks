@@ -8,15 +8,15 @@ import (
 
 func DeleteTask(c fiber.Ctx) error {
 	var task Task
-
 	id := c.Params("id")
-	db.ConnectDB().First(&task, "id = ?", id)
 
-	if task.ID == 0 {
+	// Check if tasks exists
+	if err := db.ConnectDB().First(&task, "id = ?", id).Error; err != nil {
 		return c.Status(404).JSON(fiber.Map{"error": "Task not found"})
 	}
 
+	// Delete the task from the database
 	db.ConnectDB().Delete(&task)
 
-	return c.JSON(task)
+	return c.Status(200).JSON(task)
 }

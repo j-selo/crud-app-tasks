@@ -8,15 +8,20 @@ import (
 
 func UpdateTask(c fiber.Ctx) error {
 	var task Task
-
 	id := c.Params("id")
-	db.ConnectDB().First(&task, "id = ?", id)
 
-	if task.ID == 0 {
+	// Check if tasks exists
+	if err := db.ConnectDB().First(&task, "id = ?", id).Error; err != nil {
 		return c.Status(404).JSON(fiber.Map{"error": "Task not found"})
 	}
 
+	// Parse the request body
+	if err := c.Bind().JSON(&task); err != nil {
+		return c.Status(400).JSON(fiber.Map{"error": "Cannot parse JSON"})
+	}
+
+	// Update the task in the database
 	db.ConnectDB().Save(&task)
 
-	return c.JSON(task)
+	return c.Status(200).JSON(task)
 }
