@@ -80,13 +80,13 @@ http://localhost:3000
 ### Create a Task
 
 ```http
-POST /tasks/create
+POST /create
 ```
 
 Example request:
 
 ```bash
-curl -X POST http://localhost:3000/tasks/create \
+curl -X POST http://localhost:3000/create \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Write README",
@@ -98,37 +98,37 @@ curl -X POST http://localhost:3000/tasks/create \
 ### Get All Tasks
 
 ```http
-GET /tasks
+GET /
 ```
 
 Example request:
 
 ```bash
-curl http://localhost:3000/tasks
+curl http://localhost:3000/
 ```
 
 ### Get One Task
 
 ```http
-GET /tasks/:id
+GET /:id
 ```
 
 Example request:
 
 ```bash
-curl http://localhost:3000/tasks/1
+curl http://localhost:3000/1
 ```
 
 ### Update a Task
 
 ```http
-PUT /tasks/update/:id
+PUT /update/:id
 ```
 
 Example request:
 
 ```bash
-curl -X PUT http://localhost:3000/tasks/update/1 \
+curl -X PUT http://localhost:3000/update/1 \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Updated title",
@@ -140,13 +140,13 @@ curl -X PUT http://localhost:3000/tasks/update/1 \
 ### Delete a Task
 
 ```http
-DELETE /tasks/delete/:id
+DELETE /delete/:id
 ```
 
 Example request:
 
 ```bash
-curl -X DELETE http://localhost:3000/tasks/delete/1
+curl -X DELETE http://localhost:3000/delete/1
 ```
 
 ## Task Model
