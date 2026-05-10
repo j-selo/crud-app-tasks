@@ -1,0 +1,20 @@
+# Environment variables
+.env
+
+# Compiled binaries
+crud-app-tasks
+
+# Dependency directories
+vendor/
+
+# Go workspace
+go.work
+go.work.sum
+
+# IDE and editor files
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
